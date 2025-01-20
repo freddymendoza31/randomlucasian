@@ -43,7 +43,7 @@ $("#login").submit(function (e) {
     data = $(this).serializeArray();
     data.push({ name: "opcn", value: 'save' });
     $.ajax({
-        url: '/login',
+        url: '/logins',
         type: 'post',
         dataType: 'JSON',
         data: data,
@@ -52,6 +52,7 @@ $("#login").submit(function (e) {
         },
     })
         .done(function ({ error, msj, url }) {
+            
             if (!error) {
                 Command: toastr["success"](msj)
 

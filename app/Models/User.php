@@ -47,12 +47,4 @@ class User extends Authenticatable
     public function setpasswordAttribute($password){
         $this->attributes['password'] = bcrypt($password);
     }
-    public function registradas()
-    {
-        return $this->hasMany(AgregarCtaBancariasModel::class, 'id_usuario_origen');
-    }
-    public function misCuentas()
-    {
-        return $this->hasMany(CuentasBancariasModel::class, 'user_id');
-    }
 }

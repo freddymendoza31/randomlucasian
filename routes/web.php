@@ -7,7 +7,7 @@ use App\Http\Controllers\TransferirController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CuentasBancariasController;
 use App\Http\Controllers\AgregarCtaBancariasController;
-
+use App\Http\Controllers\RandomController;
 
 
 /*
@@ -21,24 +21,22 @@ use App\Http\Controllers\AgregarCtaBancariasController;
 |
 */
 
-Route::get('/', function () {
-return view('home');
-})->middleware('auth');
+ Route::get('/', function () {
+ return view('home');
+ })->middleware('auth');
 
-
+ Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'login'])->name('login.index');
+    Route::post('/logins', [LoginController::class, 'loginsession']);
+});
 
 Route::get('/registro', [RegisterController::class, 'registro'])->name('registro.index');
-Route::post('/registro', [RegisterController::class, 'create'])->name('create.index');
-Route::get('/login', [LoginController::class, 'login'])->name('login.index');
-Route::get('/alluser', [LoginController::class, 'allUser']);
-Route::post('/login', [LoginController::class, 'loginsession'])->name('loginsession.index');
+Route::post('/registros', [RegisterController::class, 'create']);
 Route::get('/logout', [LoginController::class, 'destroy'])->name('destroy.index');
-Route::post('/transferir', [TransferirController::class, 'transferir'])->name('transferir.index');
-Route::get('/movimientosBco', [TransferirController::class, 'movimientosBco']);
-Route::get('/consultProductos', [ProductoController::class, 'consultProductos']);
-Route::post('/consultCuentas', [CuentasBancariasController::class, 'consultCuentas']);
-Route::get('/cuentaOrigen', [CuentasBancariasController::class, 'cuentaOrigen']);
-Route::post('/InscribirCta', [AgregarCtaBancariasController::class, 'createCtaBancarias']);
 
-
-
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [LoginController::class, 'home']);
+    Route::get('/random', [RandomController::class, 'random'])->name('random.index');
+    Route::get('/randomuser', [RandomController::class, 'Consultar_participantes']);
+    
+});

@@ -15,11 +15,14 @@ class RegisterController extends Controller
     
     public function create(Request $request )
     {
-       
         $validar = User::whereCedulaOrEmail($request->input('cedula'), $request->input('email'))->first();
-      
-       
-        if (empty($validar)) {
+
+        if ($request->input('codigo') !== 'Fm20012025') {
+            $result['error'] = true;
+            $result['msj'] = 'Códigode registro incorrecto';
+            echo json_encode($result);
+            return;
+        } elseif(empty($validar)) {
             $insert = new user();
             $insert->cedula= $request->input('cedula');
             $insert->name= $request->input('nombre');
@@ -39,6 +42,4 @@ class RegisterController extends Controller
         echo json_encode($result);
     }
 
-  
-   
 }

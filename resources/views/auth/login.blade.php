@@ -23,7 +23,7 @@
 
                 <div class="d-flex justify-content-center">
                     <div class="brand_logo_container">
-                        <img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png"
+                        <img src="{{ asset('storage/MendozaCode.jpg')}}"
                             class="brand_logo" alt="Logo">
                     </div>
                 </div>
@@ -35,15 +35,15 @@
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="number" name="cedula" id="cedula" class="form-control input_user"
-                                placeholder="Número de identificación" >
+                            <input type="email" name="email" id="email" class="form-control input_pass"
+                            placeholder="@Email" required>
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password" name="password" id="password" class="form-control input_pass"
-                                placeholder="password" pattern="[0-9]{4}">
+                                placeholder="Password" pattern="[0-9]">
                         </div>
 
                         <div class="d-flex justify-content-center mt-3 login_container">

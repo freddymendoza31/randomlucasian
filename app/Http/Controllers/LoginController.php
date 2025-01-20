@@ -11,10 +11,18 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-
     public function login()
     {
-        return view('auth.login');
+        if (Auth::check()) {
+            return redirect('/home'); // Redirige si el usuario ya está autenticado
+        }
+    
+        return response()
+            ->view('auth.login') // Carga la vista del login
+            ->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+            ->header('Pragma', 'no-cache')
+            ->header('Expires', 'Sat, 01 Jan 2000 00:00:00 GMT');
+        
     }
 
     public function home(){
@@ -22,23 +30,21 @@ class LoginController extends Controller
     }
 
     public function loginsession(Request $request){
-
-        if (Auth()->attempt(Request(['cedula', 'password'])) == false) {
+       
+        if (Auth()->attempt(Request(['email', 'password'])) == false) {
 
             $result['error'] = true;
             $result['msj'] = 'Contraseña o cédula son incorrectos';
-
+            $result['url'] =  NULL;
+            echo json_encode($result);
+             return;
         }else{
-
             $result['error'] = false;
             $result['msj'] = 'Iniciando sistema...';
             $result['url'] =  '/';
-
         }
-
         echo json_encode($result);
         LoginController::usuario();
-
     }
 
     public function destroy()
@@ -47,13 +53,6 @@ class LoginController extends Controller
         return redirect()->to('/');
     }
 
-    public static function allUSer(){
-       $user = LoginModel::select('users.id','users.name','cuentas_bancarias.cuenta','cuentas_bancarias.estado')
-       ->leftjoin('cuentas_bancarias', 'users.id', '=', 'cuentas_bancarias.user_id')
-       ->where('users.id', '<>', Auth()->id())->get();
-
-       echo json_encode($user);
-    }
 
     public function usuario(){
         $user = LoginModel::where('id',Auth()->id())->first();

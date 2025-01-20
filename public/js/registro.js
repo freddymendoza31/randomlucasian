@@ -50,13 +50,13 @@ $('#registro').submit(function (e) {
         data = $(this).serializeArray();
 
         $.ajax({
-            url: '/registro',
+            url: '/registros',
+            type: 'post',
+            dataType: 'JSON',
             data: data,
-            type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            dataType: 'JSON',
         }).done(function ({ error, msj, url }) {
             console.log(error)
             if (!error) {

@@ -111,13 +111,13 @@ tbody {
     width: 200px;
 }
 
-.imgtransfer {
+.imganimations {
     width: 100%;
     height: 100%;
     transition-property: width;
     transition-duration: 2s;
 }
-.imgtransfer:hover {
+.imganimations:hover {
     border: 1px solid #552cb8;
     cursor: pointer;
     width: 90%;
@@ -131,4 +131,14 @@ tbody {
 
 span.btn-danger {
     background-color: #552cb8;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #552cb8;
+    border-color: #ffffff;
+}
+
+.text-center{
+    color: #552cb8;
 }

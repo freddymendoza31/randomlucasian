@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
         integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
 
 </head>
 <!--Coded with love by Mutiullah Samim-->
@@ -22,8 +22,7 @@
 
                 <div class="d-flex justify-content-center">
                     <div class="brand_logo_container">
-                        <img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png"
-                            class="brand_logo" alt="Logo">
+                        <img src="{{ asset('storage/MendozaCode.jpg') }}" class="brand_logo" alt="Logo">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center form_container">
@@ -55,17 +54,23 @@
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password" name="password" id="password" class="form-control input_pass"
-                                placeholder="password de 4 digitos" pattern="[0-9]{4}" required>
+                                placeholder="password" required>
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password" name="password2" id="password2" class="form-control input_pass"
-                                placeholder="confirmar password de 4 digitos" pattern="[0-9]{4}" required>
+                                placeholder="confirmar password" required>
+
                         </div>
-
-
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-code"></i></span>
+                            </div>
+                            <input type="password" name="codigo" id="codigo" class="form-control input_user"
+                                placeholder="Código de verificación" >
+                        </div>
                         <div class="d-flex justify-content-center mt-3 login_container">
                             <button type="submit" name="button" class="btn login_btn">Registrarme</button>
                         </div>
@@ -74,8 +79,8 @@
 
                 <div class="mt-4">
                     <div class="d-flex justify-content-center links">
-                        <span>Ya estoy registrado</span><a href="{{ route('login.index') }}"
-                            class="ml-2">Iniciar Sessión</a>
+                        <span>Ya estoy registrado</span><a href="{{ route('login.index') }}" class="ml-2">Iniciar
+                            Sessión</a>
                     </div>
 
                 </div>

@@ -1,0 +1,77 @@
+/*
+Author: FREDDY JR MENDOZA PADILLA
+Date: 21/06/2024
+Description: Script para seleccionar un participante al azar y disparar confeti.
+*/
+body {
+    /* font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    height: 100vh;
+    background-color: #f0f0f0;
+    background-image: url('https://www.lucasian.com/wp-content/uploads/2022/11/Grupo-46.svg');
+    background-size:auto; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+h2 {
+    color: #fff;
+    background: #d2723b;
+    border-radius: 13px;
+    width: max-content;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    background: #d2723b;
+    color: white;
+    border: chocolate;
+    border-radius: 6px;
+}
+
+button:hover {
+    background-color: #007BFF;
+    color: white;
+}
+
+p {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #117c0f;
+}
+#str{
+    color: black;
+}
+#selectedParticipant {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    height: 50px; /* Altura fija para el contenedor */
+    overflow: hidden;
+    width: max-content;
+}
+@keyframes changeText {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+.animateText {
+    animation: changeText 0.1s linear infinite;
+}
+#centralizado{
+    text-align: -webkit-center !important;
+    padding-left: 36%;
+    padding-top: 20%;
+}
+#str, #str2{
+    background-color: rgb(240 240 240 / 74%);
+}

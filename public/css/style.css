@@ -1,17 +1,20 @@
-/* Coded with love by Mutiullah Samim */
+
 body,
 html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #60a3bc !important;
+    background-image: url('/storage/copasst3.jpg')!important;
+    background-size:cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
 .user_card {
-    height: 470px;
+    height: auto;
     width: 350px;
     margin-top: auto;
     margin-bottom: auto;
-    background: #404040;
+    background: #552cb891;
     position: relative;
     display: flex;
     justify-content: center;
@@ -22,7 +25,7 @@ html {
         0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5px;
+    border-radius: 16px;
 }
 .brand_logo_container {
     position: absolute;
@@ -30,7 +33,7 @@ html {
     width: 170px;
     top: -75px;
     border-radius: 50%;
-    background: #60a3bc;
+    background: #ffffff63;
     padding: 10px;
     text-align: center;
 }
@@ -47,6 +50,11 @@ html {
     width: 100%;
     background: #c0392b !important;
     color: white !important;
+}
+.login_btn:hover{
+    background:#4652f5 !important;
+    color: white !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .login_btn:focus {
     box-shadow: none !important;
@@ -85,5 +93,19 @@ a {
 }
 
 a:hover {
-    color: #c0392b;
+    background:#4652f5 !important;
+    color: white !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* input::placeholder {
+    
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 500;
+  } */
+
+#login {
+    width: 297px;
+    padding: 20px;
 }
