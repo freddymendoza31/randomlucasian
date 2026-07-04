@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/png"
-        href="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png" />
+    <link rel="icon" href="{{ asset('storage/favicon-256x256.png') }}" type="image/x-icon">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('tittle') - MI COPASST MANAGGER</title>
+    <title>@yield('tittle') - MI COPASST MANAGER</title>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -25,27 +24,25 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
     <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/home.css') }}?v={{ filemtime(public_path('css/home.css')) }}" rel="stylesheet">
+
 
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg">
+    <div class="row navbarmenu" >
         <!-- Navbar content -->
-        <div class="col-md-4">
-            <img src="storage/{{ 'MendozaCode.jpg' }}"
-                alt="Logo" style="width:100px;">
+        <div class="col-md-2">
+            <img src="storage/MendozaCode.jpg" alt="Logo" style="width:50px;">
         </div>
-        <div class="col-md-4 center">
-            <h1>MI COPASST MANAGGER</h1>
+        <div class="col-md-8 center">
+            <h1>MI COPASST MANAGER</h1>
         </div>
-        <div class="col-md-4 alignleft">
-            {{-- <a type="button" class="btn btn-success" data-toggle="modal"data-target="#mdlInscribirCuenta">Inscribir
-                Producto</a>- --}}
-            <a class="btn btn-danger" href="{{ route('destroy.index') }}"><i class='fas fa-backspace'></i> Salir</a> 
+        <div class="col-md-2 alignleft">
+            <a class="btn btn-danger" href="{{ route('destroy.index') }}"><i class="fas fa-backspace"></i> Salir</a>
         </div>
-    </nav>
+    </div>
 
     @yield('content')
 

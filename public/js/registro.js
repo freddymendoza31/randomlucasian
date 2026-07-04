@@ -10,7 +10,7 @@ $(document).ready(function () {
     $('#password2', this).on('input', function () {
         this.value = this.value.replace(/[^0-9]/g, '');
     });
-    validate()
+    validate();
 });
 
 function validate() {
@@ -18,22 +18,34 @@ function validate() {
     $("#registro").validate({
 
         rules: {
-
+            nombre: {
+                required: true,
+                minlength: 3
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            cedula: {
+                required: true,
+                maxlength: 10,
+                minlength: 6
+            },
             password: {
                 required: true,
-                maxlength: 4,
                 minlength: 4
 
             },
             password2: {
                 required: true,
-                maxlength: 4,
                 minlength: 4
 
             }
         },
         messages: {
-
+            nombre: "Este campo es obligatorio. (Digite su nombre )",
+            email: "Este campo es obligatorio. (Digite su email )",
+            cedula: "Este campo es obligatorio. (minimo 6 digitos)",
             password2: "Este campo es obligatorio. (requiere 4 digitos )",
             password: "Este campo es obligatorio. (requiere 4 digitos )",
         },
@@ -45,6 +57,7 @@ function validate() {
 
 $('#registro').submit(function (e) {
     e.preventDefault();
+    notify();
     if ($('#password').val() === $('#password2').val()) {
         let data = [];
         data = $(this).serializeArray();
@@ -110,58 +123,69 @@ $('#registro').submit(function (e) {
 
 });
 
-$(".login_btn").on("click", notify);
+//$(".login_btn").on("click", notify);
 
 function notify() {
     jQuery('input').each(function () {
         if (jQuery(this).prop('value') == '') {
 
-            Command: toastr["warning"]("Digite su " + jQuery(this).prop('name'), "error")
-
-            toastr.options = {
-                "closeButton": false,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": false,
-                "positionClass": "toast-top-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
+            return true;
+            console.log('el campo esta vacio')
 
         }
 
     });
 
-    if ($('#password').val() !== $('#password2').val()) {
-        Command: toastr["error"]("el campo  contraseña no coincide", "error")
+    // jQuery('input').each(function () {
+    //     if (jQuery(this).prop('value') == '') {
 
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-right",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
+    //         Command: toastr["warning"]("Digite su " + jQuery(this).prop('name'), "error")
 
-    }
+    //         toastr.options = {
+    //             "closeButton": false,
+    //             "debug": false,
+    //             "newestOnTop": false,
+    //             "progressBar": false,
+    //             "positionClass": "toast-top-right",
+    //             "preventDuplicates": false,
+    //             "onclick": null,
+    //             "showDuration": "300",
+    //             "hideDuration": "1000",
+    //             "timeOut": "5000",
+    //             "extendedTimeOut": "1000",
+    //             "showEasing": "swing",
+    //             "hideEasing": "linear",
+    //             "showMethod": "fadeIn",
+    //             "hideMethod": "fadeOut"
+    //         }
+
+    //     }
+
+    // });
+
+
+    // if ($('#password').val() !== $('#password2').val()) {
+    //     Command: toastr["error"]("el campo  contraseña no coincide", "error")
+
+    //     toastr.options = {
+    //         "closeButton": false,
+    //         "debug": false,
+    //         "newestOnTop": false,
+    //         "progressBar": false,
+    //         "positionClass": "toast-top-right",
+    //         "preventDuplicates": false,
+    //         "onclick": null,
+    //         "showDuration": "300",
+    //         "hideDuration": "1000",
+    //         "timeOut": "5000",
+    //         "extendedTimeOut": "1000",
+    //         "showEasing": "swing",
+    //         "hideEasing": "linear",
+    //         "showMethod": "fadeIn",
+    //         "hideMethod": "fadeOut"
+    //     }
+
+    // }
 
 
 }

@@ -142,3 +142,59 @@ span.btn-danger {
 .text-center{
     color: #552cb8;
 }
+
+
+
+.navbarmenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-around;
+    flex-wrap: nowrap;
+    background: #552cb8;
+}
+
+@media (max-width: 768px){
+    .rowimg {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        justify-content: space-around;
+        flex-direction: column;
+        align-content: space-around;
+    }
+
+    .navbarmenu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        align-content: space-around;
+        flex-wrap: nowrap;
+        background: #552cb8;
+    }
+    .h1, h1 {
+        font-size: 20px;
+        color: #ffffff;
+    }
+    .col-6 {
+        max-width: 90%;
+    }
+
+    .icono {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        justify-content: space-around;
+        align-content: space-around;
+        flex-direction: row;
+    }
+
+}

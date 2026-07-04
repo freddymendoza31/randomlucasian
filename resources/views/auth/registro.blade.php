@@ -2,8 +2,9 @@
 <html>
 
 <head>
-    <title>MY APP-BANK</title>
+    <title>MY APP-COPASST</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -22,49 +23,49 @@
 
                 <div class="d-flex justify-content-center">
                     <div class="brand_logo_container">
-                        <img src="{{ asset('storage/MendozaCode.jpg') }}" class="brand_logo" alt="Logo">
+                        <img src="{{ asset('storage/copasst8.jpg') }}" class="brand_logo" alt="Logo">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center form_container">
                     <form id="registro" method="POST">
                         @csrf
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <input type="text" name="cedula" id="cedula" class="form-control input_user"
-                                placeholder="Número de identificación " required>
+                                placeholder="Número de identificación " >
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <input type="txt" name="nombre" id="nombre" class="form-control input_pass"
-                                placeholder="Nombre completo" required>
+                                placeholder="Nombre completo" >
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                             </div>
                             <input type="email" name="email" id="email" class="form-control input_pass"
-                                placeholder="@Email" required>
+                                placeholder="@Email" >
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password" name="password" id="password" class="form-control input_pass"
-                                placeholder="password" required>
+                                placeholder="password" >
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password" name="password2" id="password2" class="form-control input_pass"
-                                placeholder="confirmar password" required>
+                                placeholder="confirmar password" >
 
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-code"></i></span>
                             </div>
@@ -79,7 +80,7 @@
 
                 <div class="mt-4">
                     <div class="d-flex justify-content-center links">
-                        <span>Ya estoy registrado</span><a href="{{ route('login.index') }}" class="ml-2">Iniciar
+                        <span>Ya estoy registrado</span><a href="{{ route('login') }}" class="ml-2">Iniciar
                             Sessión</a>
                     </div>
 

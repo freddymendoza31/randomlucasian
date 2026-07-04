@@ -2,9 +2,10 @@
 <html>
 
 <head>
-    <title>MY APP-BANK</title>
+    <title>MY APP-COPASST</title>
+    <link rel="icon" href="{{ asset('storage/favicon-256x256.png') }}" type="image/x-icon">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -23,7 +24,7 @@
 
                 <div class="d-flex justify-content-center">
                     <div class="brand_logo_container">
-                        <img src="{{ asset('storage/MendozaCode.jpg')}}"
+                        <img src="{{ asset('storage/copasst8.jpg')}}"
                             class="brand_logo" alt="Logo">
                     </div>
                 </div>
@@ -43,7 +44,7 @@
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password" name="password" id="password" class="form-control input_pass"
-                                placeholder="Password" pattern="[0-9]">
+                                placeholder="Password">
                         </div>
 
                         <div class="d-flex justify-content-center mt-3 login_container">
@@ -51,7 +52,7 @@
                         </div>
                     </form>
                 </div>
-
+                <a href="{{ route('password.request') }}" class="oldpass">¿Olvidaste tu contraseña?</a>
                 <div class="mt-4">
                     <div class="d-flex justify-content-center links">
                         <span>No tienes una cuenta? </span><a href="{{ route('registro.index') }}"

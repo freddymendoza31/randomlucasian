@@ -4,17 +4,17 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-image: url('/storage/copasst3.jpg')!important;
-    background-size:cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+    background-image: url('/storage/copasst1.jpg')!important;
+    background-size:contain; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
     background-position: center; /* Centra la imagen de fondo */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-repeat:repeat-x; /* Evita que la imagen se repita */
 }
 .user_card {
     height: auto;
     width: 350px;
     margin-top: auto;
     margin-bottom: auto;
-    background: #552cb891;
+    background: #2a506399;
     position: relative;
     display: flex;
     justify-content: center;
@@ -99,7 +99,7 @@ a:hover {
 }
 
 /* input::placeholder {
-    
+
     font-size: 14px;
     font-style: italic;
     font-weight: 500;
@@ -108,4 +108,42 @@ a:hover {
 #login {
     width: 297px;
     padding: 20px;
+}
+
+.oldpass{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+@media (max-width: 768px) {
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-image: url('/storage/copasst1.jpg')!important;
+        background-size: cover; /* La imagen cubre toda la pantalla */
+        background-position: center; /* Centra la imagen de fondo */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+    }
+
+    .form_container {
+        margin-top: 20% !important;
+    }
+
+     .text-center{
+        padding: 0% 0% 16% 0% !important;
+    }
+    .brand_logo_container {
+        position: absolute;
+        height: 170px;
+        width: 170px;
+        top: -112px !important;
+        border-radius: 50%;
+        background: #ffffff63;
+        padding: 10px;
+        text-align: center;
+    }
+
 }

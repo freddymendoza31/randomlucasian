@@ -2,13 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\TransferirController;
-use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\CuentasBancariasController;
-use App\Http\Controllers\AgregarCtaBancariasController;
 use App\Http\Controllers\RandomController;
-
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\CuestionarioController;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +24,7 @@ use App\Http\Controllers\RandomController;
  })->middleware('auth');
 
  Route::middleware('guest')->group(function () {
-    Route::get('/login', [LoginController::class, 'login'])->name('login.index');
+    Route::get('/login', [LoginController::class, 'login'])->name('login');
     Route::post('/logins', [LoginController::class, 'loginsession']);
 });
 
@@ -38,5 +36,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [LoginController::class, 'home']);
     Route::get('/random', [RandomController::class, 'random'])->name('random.index');
     Route::get('/randomuser', [RandomController::class, 'Consultar_participantes']);
-    
+    Route::get('/countuser', [RandomController::class, 'numero_participantes']);
+    Route::get('/cuestionario', [CuestionarioController::class, 'Cuestionario'])->name('cuestionario');
+    Route::get('/randomcuest', [CuestionarioController::class, 'Randomcuest']);
+    Route::post('/update-question-status', [CuestionarioController::class, 'updateQuestionStatus']);
 });
+
+Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');

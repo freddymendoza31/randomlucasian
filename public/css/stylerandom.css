@@ -24,7 +24,7 @@ h2 {
     color: #fff;
     background: #d2723b;
     border-radius: 13px;
-    width: max-content;
+    width: auto;
 }
 
 button {
@@ -55,16 +55,16 @@ p {
     font-size: 24px;
     font-weight: bold;
     margin-top: 20px;
-    height: 50px; /* Altura fija para el contenedor */
+    height: 70px; /* Altura fija para el contenedor */
     overflow: hidden;
-    width: max-content;
+    width: -webkit-fill-available;
 }
 @keyframes changeText {
     0% { opacity: 1; }
     50% { opacity: 0; }
     100% { opacity: 1; }
 }
-.animateText {
+.animateText{
     animation: changeText 0.1s linear infinite;
 }
 #centralizado{
@@ -74,4 +74,19 @@ p {
 }
 #str, #str2{
     background-color: rgb(240 240 240 / 74%);
+}
+
+
+<style>
+.col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  border: 1px solid #ccc;
+}
+
+.content {
+  margin: auto;
+  text-align: center; /* Opcional si es texto */
 }
