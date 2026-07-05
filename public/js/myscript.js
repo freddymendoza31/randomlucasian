@@ -3,7 +3,7 @@ $(document).ready(function () {
         this.value = this.value.replace(/[^0-9]/g, '');
     });
 
-    $('#password', this).on('input', function () {
+    $('#passwords', this).on('input', function () {
         this.value = this.value.replace(/[^0-9]/g, '');
     });
 
@@ -21,14 +21,14 @@ function validate() {
             },
             password: {
                 required: true,
-                maxlength: 4,
-                minlength: 4,
+                maxlength: 20,
+                minlength: 6,
             }
         },
         messages: {
 
             cedula: "Este campo es obligatorio. digite su numero de codumento",
-            password: "Este campo es obligatorio. (requiere 4 digitos )",
+            password: "Este campo es obligatorio. (requiere 6 digitos )",
         },
         errorElement: 'span',
     });

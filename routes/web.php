@@ -37,6 +37,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/random', [RandomController::class, 'random'])->name('random.index');
     Route::get('/randomuser', [RandomController::class, 'Consultar_participantes']);
     Route::get('/countuser', [RandomController::class, 'numero_participantes']);
+    Route::get('/random-participants', [RandomController::class, 'listar_participantes']);
+    Route::post('/random-participants/bulk-update', [RandomController::class, 'actualizar_participantes']);
+    Route::post('/random-participants/update-status', [RandomController::class, 'actualizar_estado_participante']);
     Route::get('/cuestionario', [CuestionarioController::class, 'Cuestionario'])->name('cuestionario');
     Route::get('/randomcuest', [CuestionarioController::class, 'Randomcuest']);
     Route::post('/update-question-status', [CuestionarioController::class, 'updateQuestionStatus']);

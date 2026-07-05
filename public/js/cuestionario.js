@@ -1,5 +1,10 @@
+/*
+Author: FREDDY JR MENDOZA PADILLA
+Date: 21/06/2024
+Description: Script para seleccionar un participante al azar y disparar confeti.
+*/
 $(document).ready(function () {
-   // getPreguntas(); // Cargar preguntas inicialmente
+  //  getPreguntas(); // Cargar preguntas inicialmente
 });
 
 // Función para obtener preguntas y seleccionar una al azar
