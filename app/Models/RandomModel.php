@@ -9,4 +9,8 @@ class RandomModel extends Model
 {
     use HasFactory;
     protected $table= "participantes";
+    protected $fillable = [
+        'nombres_apellidos',
+        'status',
+    ];
 }

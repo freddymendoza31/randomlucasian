@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/randomuser', [RandomController::class, 'Consultar_participantes']);
     Route::get('/countuser', [RandomController::class, 'numero_participantes']);
     Route::get('/random-participants', [RandomController::class, 'listar_participantes']);
+    Route::post('/random-participants/save', [RandomController::class, 'guardar_participante']);
+    Route::post('/random-participants/delete', [RandomController::class, 'eliminar_participante']);
     Route::post('/random-participants/bulk-update', [RandomController::class, 'actualizar_participantes']);
     Route::post('/random-participants/update-status', [RandomController::class, 'actualizar_estado_participante']);
     Route::get('/cuestionario', [CuestionarioController::class, 'Cuestionario'])->name('cuestionario');

@@ -39,11 +39,81 @@ class RandomController extends Controller
     public function listar_participantes()
     {
         $participantes = RandomModel::select('id', 'nombres_apellidos', 'status', 'updated_at')
-            ->orderByDesc('status')
+            ->orderByRaw('CASE WHEN status = 2 THEN 0 ELSE 1 END')
+            ->orderByDesc('updated_at')
             ->orderBy('nombres_apellidos')
             ->get();
 
         return response()->json($participantes);
+    }
+
+    public function guardar_participante(Request $request)
+    {
+        RandomController::Logs();
+
+        $data = $request->validate([
+            'id' => ['nullable', 'integer', 'exists:participantes,id'],
+            'nombres_apellidos' => ['required', 'string', 'max:255'],
+            'status' => ['nullable', 'integer', 'in:1,2'],
+        ]);
+
+        $incomingStatus = (int) ($data['status'] ?? 1);
+        $incomingName = trim($data['nombres_apellidos']);
+        $participante = !empty($data['id'])
+            ? RandomModel::findOrFail($data['id'])
+            : new RandomModel();
+        $isExistingParticipant = $participante->exists;
+        $statusChanged = $isExistingParticipant && (int) $participante->status !== $incomingStatus;
+
+        $participante->nombres_apellidos = $incomingName;
+        $participante->status = $incomingStatus;
+
+        if ($isExistingParticipant && ! $statusChanged) {
+            $participante->timestamps = false;
+            $participante->save();
+            $participante->timestamps = true;
+        } else {
+            $participante->save();
+        }
+
+        $accion = $isExistingParticipant ? 'actualizar_participante' : 'crear_participante';
+        $detalle = $isExistingParticipant
+            ? "ID {$participante->id} | Nombre: {$participante->nombres_apellidos} | Estado: {$participante->status}"
+            : "Nombre: {$participante->nombres_apellidos} | Estado: {$participante->status}";
+
+        self::registrarAccion($accion, $detalle);
+
+        return response()->json([
+            'success' => true,
+            'message' => !empty($data['id'])
+                ? 'Participante actualizado correctamente.'
+                : 'Participante creado correctamente.',
+            'participante' => [
+                'id' => $participante->id,
+                'nombres_apellidos' => $participante->nombres_apellidos,
+                'status' => $participante->status,
+                'updated_at' => $participante->updated_at,
+            ],
+        ]);
+    }
+
+    public function eliminar_participante(Request $request)
+    {
+        RandomController::Logs();
+
+        $data = $request->validate([
+            'id' => ['required', 'integer', 'exists:participantes,id'],
+        ]);
+
+        $participante = RandomModel::findOrFail($data['id']);
+        $detalle = "ID {$participante->id} | Nombre: {$participante->nombres_apellidos} | Estado: {$participante->status}";
+        $participante->delete();
+        self::registrarAccion('eliminar_participante', $detalle);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Participante eliminado correctamente.',
+        ]);
     }
 
     public function actualizar_participantes(Request $request)
@@ -70,6 +140,8 @@ class RandomController extends Controller
             }
         });
 
+        self::registrarAccion('actualizacion_masiva', "Participantes actualizados: {$updatedCount}");
+
         return response()->json([
             'success' => true,
             'message' => $updatedCount > 0
@@ -88,6 +160,10 @@ class RandomController extends Controller
         $participante = RandomModel::findOrFail($data['id']);
         $participante->status = (int) $data['status'];
         $participante->save();
+        self::registrarAccion(
+            'cambiar_estado_participante',
+            "ID {$participante->id} | Nombre: {$participante->nombres_apellidos} | Estado: {$participante->status}"
+        );
 
         return response()->json([
             'success' => true,
@@ -110,5 +186,18 @@ class RandomController extends Controller
         $insert->ip = request()->ip();
         $insert->save();
 
+    }
+
+    public static function registrarAccion(string $accion, ?string $detalle = null)
+    {
+        $insert = new LogsModel();
+        $insert->iduser = Auth()->user()->id;
+        $insert->nombre = Auth()->user()->name;
+        $insert->ruta = url()->current();
+        $insert->metodo = request()->method();
+        $insert->ip = request()->ip();
+        $insert->accion = $accion;
+        $insert->detalle = $detalle;
+        $insert->save();
     }
 }

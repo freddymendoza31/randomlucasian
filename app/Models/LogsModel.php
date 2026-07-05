@@ -14,6 +14,8 @@ class LogsModel extends Model
        'ruta',
        'metodo',
        'ip',
+       'accion',
+       'detalle',
        'created_at',
        'updated_at',
    ];
